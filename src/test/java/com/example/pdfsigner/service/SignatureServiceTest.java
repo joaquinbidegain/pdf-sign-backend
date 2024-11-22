@@ -39,7 +39,7 @@ class SignatureServiceTest {
         );
 
         // Cargar un certificado de prueba desde resources
-        String certPath = "src/test/resources/test-cert.p12";
+        String certPath = "src/test/resources/nuevo_test.p12";
         File certTestFile = new File(certPath);
         FileInputStream certInput = new FileInputStream(certTestFile);
         certFile = new MockMultipartFile(
@@ -67,7 +67,7 @@ class SignatureServiceTest {
         assertNotEquals(pdfFile.getBytes().length, signedPdf.length, "El PDF firmado debe ser diferente al original");
         
         // Guardar el PDF firmado para inspección visual
-        Files.write(Paths.get("target/signed-test.pdf"), signedPdf);
+        Files.write(Paths.get("src/test/resources/signed-test.pdf"), signedPdf);
     }
 
 

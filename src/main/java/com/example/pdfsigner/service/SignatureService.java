@@ -1,6 +1,16 @@
 package com.example.pdfsigner.service;
 
-import com.itextpdf.kernel.pdf.PdfDocument;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.security.KeyStore;
+import java.security.PrivateKey;
+import java.security.Security;
+import java.security.cert.Certificate;
+
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.StampingProperties;
 import com.itextpdf.signatures.BouncyCastleDigest;
@@ -9,19 +19,6 @@ import com.itextpdf.signatures.IExternalDigest;
 import com.itextpdf.signatures.IExternalSignature;
 import com.itextpdf.signatures.PdfSigner;
 import com.itextpdf.signatures.PrivateKeySignature;
-
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.security.KeyStore;
-import java.security.PrivateKey;
-import java.security.Security;
-import java.security.cert.Certificate;
-import java.security.cert.X509Certificate;
 
 @Service
 public class SignatureService {

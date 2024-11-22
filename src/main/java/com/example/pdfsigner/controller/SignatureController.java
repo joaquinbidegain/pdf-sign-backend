@@ -22,7 +22,13 @@ public class SignatureController {
     public ResponseEntity<byte[]> signDocument(
             @RequestParam("pdf") MultipartFile pdfFile,
             @RequestParam("certificate") MultipartFile certFile) throws IOException {
-        byte[] signedPdf = signatureService.signPdf(pdfFile, certFile);
+        byte[] signedPdf = null;
+		try {
+			signedPdf = signatureService.signPdf(pdfFile, certFile);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         return ResponseEntity.ok().body(signedPdf);
     }
 }
